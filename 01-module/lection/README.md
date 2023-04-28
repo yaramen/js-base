@@ -213,3 +213,109 @@ switch(value) {
 ```
 - [demo](02-flow/11.js)
 - [demo](02-flow/12.js)
+
+## Функция. Лямбды. Function Expression
+Функция - важнейший элемент структурного программирования, позволяющий группировать и обобщать программный код.
+
+## Объявление функции
+```js
+function <имя>(<параметры>) {
+  <инструкции>
+}
+    
+function hello() {
+  console.log('Hello!')
+}
+```
+- [demo](03-function/01.js)
+
+
+## Объявление функции с параметрами
+```js
+function hello(name) {
+  console.log(`Hello, ${name}!`)
+}
+
+hello("Jack") // Hello, Jack!
+hello("Peeter") // Hello, Peeter
+```
+- [demo](03-function/02.js)
+
+## Объявление функции с параметрами по-умолчанию
+```js
+function hello(name = "User") {
+  console.log(`Hello, ${name}!`)
+}
+
+hello() // Hello, User!
+hello(undefined) // Hello, User!
+hello("Jack") // Hello, Jack!
+hello("Peeter") // Hello, Peeter
+```
+- [demo](03-function/03.js)
+
+
+## return 
+Функция может возвращать значение, для этого используется return
+```js
+function sum(a, b) {
+  return a + b
+}
+```
+- [demo](03-function/04.js)
+
+## Области видимости
+Функция имеет доступ к внешним переменным, но если идентификатор совпадает с внешним, но локальная переменная перебивает внешнюю и внешняя переменная не доступна
+```js
+const defaultName = "User";
+const name = "V"
+
+function hello(name = '') {
+  const currentName = name ? name : defaultName
+  return `Hello, ${currentName}`
+}
+
+console.log(hello())
+console.log(hello(42))
+```
+- [demo](03-function/05.js)
+
+## Function expression
+Функции можно сохранять в переменные
+```js
+const sum = function (a, b) {
+  return a + b
+}
+
+console.log(sum) // выведет код функции
+console.log(sum(40, 2)) //42
+cosnt sum2 = sum
+console.log(sum2(40, 2)) //42
+```
+- [demo](03-function/06.js)
+
+## Immediately invoked function 
+Можно создать функцию и сразу же ее вызвать
+```js
+const rst = (function (a, b) {
+    return a + b
+})(1, 2)
+
+console.log(rst)
+console.log((function (a, b) {
+    return a + b
+})(1, 2))
+```
+- [demo](03-function/07.js)
+
+## Стрелочные функции
+Более краткий синтаксис для создания функций.
+Про особенность стрелочных функций мы поговорим, когда пройдем контекст
+```js
+const sum = (a, b) => { 
+  return a + b
+}
+
+const sum2 = (a, b) => a + b
+```
+- [demo](03-function/08.js)
