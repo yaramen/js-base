@@ -7,6 +7,8 @@
 const js = 'JavaScript'
 console.log(js)
 
+const ts = 'TypeScript';
+
 // конкатенация строк
 console.log(js + ' ' + ts)
 // строковая интерполяция
