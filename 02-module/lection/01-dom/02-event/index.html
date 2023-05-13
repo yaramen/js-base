@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .button_active {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <button class="button">Click</button>
+    </div>
+    <script>
+        const button = document.querySelector('.button');
+
+        button.addEventListener('click', () => button.classList.toggle('button_active'))
+    </script>
+</body>
+</html>

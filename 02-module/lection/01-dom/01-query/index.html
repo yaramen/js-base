@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="root">
+        <button class="button">Click</button>
+        <p class="text">Hello, world!</p>
+        <ul>
+            <li>JavaScript</li>
+            <li>TypeScript</li>
+        </ul>
+    </div>
+    <script>
+        const button = document.querySelector('.button');
+        console.log(button);
+        button.style.backgroundColor = 'red';
+        button.classList.add('button_active')
+
+        const root = document.querySelector('#root')
+        console.log(root);
+        console.log(root.innerHTML);
+
+        const list = document.querySelectorAll('li')
+        console.log(list);
+        console.log(list[0]);
+        console.log(list[0].innerText);
+    </script>
+</body>
+</html>
