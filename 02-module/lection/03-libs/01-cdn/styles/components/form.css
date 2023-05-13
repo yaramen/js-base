@@ -1,0 +1,15 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__label {
+    color: #fff;
+    width: 80px;
+}
+
+.form__field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}

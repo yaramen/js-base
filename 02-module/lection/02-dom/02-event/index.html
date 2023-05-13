@@ -16,7 +16,11 @@
     <script>
         const button = document.querySelector('.button');
 
-        button.addEventListener('click', () => button.classList.toggle('button_active'))
+        function toggleClass() {
+            button.classList.toggle('button_active')
+        }
+
+        button.addEventListener('click', toggleClass)
     </script>
 </body>
 </html>
