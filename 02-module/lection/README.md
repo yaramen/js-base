@@ -56,8 +56,8 @@ button.removeEventListener('click', toggleClass)
 
 ## Подключение внешних библиотек
 - [01-CDN](03-libs/01-cdn/index.html)
-- [01-LOCAL](03-libs/02-lib/index.html)
-- [01-YANDEX](03-libs/03-map/index.html)
+- [02-Local lib](03-libs/02-lib/index.html)
+- [03-Yandex map](03-libs/03-map/index.html)
 
 ## Array
 Массивы - упорядоченные коллекции данных
@@ -67,3 +67,7 @@ button.removeEventListener('click', toggleClass)
 - [04-Изменение элементов в массиве](04-array/04.js)
 - [05-Итерация по массиву](04-array/05.js)
 - [05-Манипуляции с массивами](04-array/06.js)
+
+## Destructuring assignment and 
+- [01-Destructuring assignment](05-dist/01.js)
+- [01-Rest parameters](05-dist/02.js)
