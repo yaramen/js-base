@@ -1,4 +1,4 @@
-# Object. DOM. Array
+# DOM. Object. Array
 
 ## Object
 Объект - тип в JS, созданный для хранения коллекции различных значений и более сложных сущностный
@@ -12,7 +12,7 @@
 - [08-Добавление и удаление свойств в объекте](01-object/08.js)
 
 ## DOM (Document Object Model)
-DOM – это представление HTML-документа ввиде дерева вложенных HTML-элементов и их содержимого
+DOM – это представление HTML-документа в виде дерева вложенных HTML-элементов и их содержимого
 ```html
 <html>
 <!DOCTYPE html>
@@ -66,8 +66,8 @@ button.removeEventListener('click', toggleClass)
 - [03-Длина массива](04-array/03.js)
 - [04-Изменение элементов в массиве](04-array/04.js)
 - [05-Итерация по массиву](04-array/05.js)
-- [05-Манипуляции с массивами](04-array/06.js)
+- [06-Манипуляции с массивами](04-array/06.js)
 
 ## Destructuring assignment and 
 - [01-Destructuring assignment](05-dist/01.js)
-- [01-Rest parameters](05-dist/02.js)
+- [02-Rest parameters](05-dist/02.js)
