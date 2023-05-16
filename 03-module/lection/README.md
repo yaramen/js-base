@@ -1,3 +1,3 @@
-## DOM. Events. 
-
-##
+## DOM. Events.
+## Модификация DOM
+## Events

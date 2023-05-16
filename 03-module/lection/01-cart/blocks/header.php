@@ -10,10 +10,12 @@
                 <li class="menu__item"><a class="menu__link" href="/">JavaScript</a></li>
                 <li class="menu__item"><a class="menu__link" href="/">TypeScript</a></li>
             </ul>
+            <?php if ($_SERVER['PHP_SELF'] !== '/cart.php'): ?>
             <a class="button button_cart" href="/cart.php">
                 <img src="/assets/cart.svg" alt="cart" width="20px"/>
                 <span class="button__count">0</span>
             </a>
+            <?php endif; ?>
             <button class="button button_login" data-popup="auth">Login</button>
         </div>
     </nav>

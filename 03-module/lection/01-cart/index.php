@@ -27,7 +27,7 @@ require_once __DIR__ . '/data/products.php';
                     <div class="card__content">
                         <h2 class="card__title"><?= $product['name'] ?></h2>
                         <div class="card__pair">
-                            <div class="card__price"><?= $product['price'] ?>руб.</div>
+                            <div class="card__price"><?= $product['price'] ?>rub.</div>
                             <button class="card__button card__button_add button" data-product-add="<?= $product['id']?>">Добавить</button>
                             <div class="card__count-change">
                                 <button class="card__button card__button_dec button" data-product-dec="<?= $product['id']?>">-</button>

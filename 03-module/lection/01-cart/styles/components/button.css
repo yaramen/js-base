@@ -16,6 +16,10 @@
     border: 2px solid white;
 }
 
+.button_primary {
+    background-color: var(--menu-background-color);
+}
+
 .button_login {
     margin-left: 20px;
 }

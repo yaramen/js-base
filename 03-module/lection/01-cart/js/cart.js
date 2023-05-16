@@ -1,19 +1,17 @@
 (function () {
-    const cartButtonCount = document.querySelector('.button_cart .button__count');
-    const addInCartButtons = document.querySelectorAll('[data-product-add]')
-    const productCards = document.querySelectorAll('[data-product-id]')
-    const incProductButtons = document.querySelectorAll('[data-product-inc]')
-    const decProductButtons = document.querySelectorAll('[data-product-dec]')
-
-
     const CART_LOCAL_STORAGE_KEY = 'cart';
-    const cartStore = {
+    const cartButtonCount = document.querySelector('.button_cart .button__count');
+    const clearOrder = document.querySelector('[data-order-clear]')
+    const orderCartTemplate = document.querySelector('#order-card');
+    const orderRoot = document.querySelector('[data-order-root]');
+
+    const orderStore = {
         get: function () {
             const store = localStorage.getItem(CART_LOCAL_STORAGE_KEY)
             return store ? JSON.parse(store) : {};
         },
         add: function (productId, count = 1) {
-            const currentState = cartStore.get()
+            const currentState = orderStore.get()
             currentState[productId] = count;
 
             if (currentState[productId] <= 0) {
@@ -27,35 +25,46 @@
     }
 
     function handlerAddInCart(e) {
-        cartStore.add(e.target.dataset.productAdd);
+        const productId = e.target.dataset.productAdd
+        orderStore.add(productId);
         updateView()
     }
 
     function handlerIncProduct(e) {
         const productId = e.target.dataset.productInc;
-        cartStore.add(productId, cartStore.get()[productId] + 1);
+        orderStore.add(productId, orderStore.get()[productId] + 1);
         updateView()
     }
 
     function handlerDecProduct(e) {
         const productId = e.target.dataset.productDec;
-        cartStore.add(productId, cartStore.get()[productId] - 1);
+        orderStore.add(productId, orderStore.get()[productId] - 1);
+        updateView()
+    }
+
+    function handlerClearOrder() {
+        orderStore.clear()
         updateView()
     }
 
     function updateView() {
         updateCart();
         updateCard();
+        updateOrder();
     }
 
     function updateCart() {
-        cartButtonCount.innerText = Object.keys(cartStore.get()).length;
+        if (cartButtonCount) {
+            cartButtonCount.innerText = Object.keys(orderStore.get()).length;
+        }
     }
 
     function updateCard() {
+        const productCards = document.querySelectorAll('[data-product-id]')
+        const productInCard = orderStore.get()
+
         productCards.forEach(cardElement => {
             const productId = cardElement.dataset.productId;
-            const productInCard = cartStore.get()
             if (productId in productInCard) {
                 const countElement = cardElement.querySelector('[data-product-count]')
                 cardElement.classList.add('card_added');
@@ -66,10 +75,48 @@
         })
     }
 
-    addInCartButtons.forEach(productButton => productButton.addEventListener('click', handlerAddInCart))
-    incProductButtons.forEach(incButton => incButton.addEventListener('click', handlerIncProduct))
-    decProductButtons.forEach(decButton => decButton.addEventListener('click', handlerDecProduct))
+    function updateOrder() {
+        // добавить код для подсчета суммы
+        // global object products
+    }
 
-    updateView();
+    function initCart() {
+        const addInCartButtons = document.querySelectorAll('[data-product-add]')
+        const incProductButtons = document.querySelectorAll('[data-product-inc]')
+        const decProductButtons = document.querySelectorAll('[data-product-dec]')
+
+        addInCartButtons.forEach(productButton => productButton.addEventListener('click', handlerAddInCart))
+        incProductButtons.forEach(incButton => incButton.addEventListener('click', handlerIncProduct))
+        decProductButtons.forEach(decButton => decButton.addEventListener('click', handlerDecProduct))
+        clearOrder && clearOrder.addEventListener('click', handlerClearOrder)
+
+        updateView();
+    }
+
+    function renderOrder() {
+        if (typeof products === "undefined") {
+            return;
+        }
+
+        const order = orderStore.get();
+
+        let html = ''
+        for(const productId in order) {
+            html += renderOrderCard(products[productId])
+        }
+
+        orderRoot.innerHTML = html || '<p>Пусто</p>';
+    }
+
+    function renderOrderCard({id, image, name, price}) {
+        return orderCartTemplate.innerHTML
+            .replaceAll('{{PRODUCT_ID}}', id)
+            .replaceAll('{{PRODUCT_IMAGE}}', image)
+            .replaceAll('{{PRODUCT_NAME}}', name)
+            .replaceAll('{{PRODUCT_PRICE}}', price)
+    }
+
+    renderOrder();
+    initCart();
 })();
 

@@ -8,6 +8,7 @@
 
 .card-list_cart {
     flex-direction: column;
+    max-width: 700px;
 }
 
 .card-list_cart .card-list__item {
