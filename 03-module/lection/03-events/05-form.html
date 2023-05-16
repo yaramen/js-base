@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        label {
+            display: block;
+        }
+
+        form {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label>
+            ФИО
+            <input type="text" name="fio">
+        </label>
+        <fieldset>
+            <legend>Сфера</legend>
+            <label>
+                IT
+                <input type="radio" name="scope" value="it">
+            </label>
+            <label>
+                Sale
+                <input type="radio" name="scope" value="sale">
+            </label>
+        </fieldset>
+
+        <label>
+            Стаж
+            <select name="experience" data-prodcut="3">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </label>
+        <label>
+            Согласен на обработку персональных данных
+            <input type="checkbox" name="agree">
+        </label>
+        <button>Submit</button>
+    </form>
+
+    <script>
+        const form = document.querySelector('form');
+        const formState = {}
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log(formState);
+        })
+
+        form.addEventListener('change', (e) => {
+            console.log('change', e.target.value );
+            formState[e.target.name] = e.target.value;
+        })
+    </script>
+</body>
+</html>

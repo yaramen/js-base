@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <p>
+            <a href="http://yandex.ru">yandex</a>
+        </p>
+    </div>
+
+    <script>
+        const div = document.querySelector('div');
+        const p = document.querySelector('p');
+        const a = document.querySelector('a');
+
+        div.addEventListener('click', () => console.log('div click'))
+        p.addEventListener('click', () => console.log('p click'))
+        a.addEventListener('click', (e) => {
+            console.log('button click')
+            e.preventDefault();
+        })
+    </script>
+</body>
+</html>

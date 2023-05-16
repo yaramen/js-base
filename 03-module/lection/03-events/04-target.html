@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <p>
+            <button>Click</button>
+        </p>
+    </div>
+
+    <script>
+        const div = document.querySelector('div');
+        const p = document.querySelector('p');
+        const button = document.querySelector('button');
+
+        div.addEventListener('click', (e) => console.log('div click', ', target: ', e.target))
+        p.addEventListener('click', (e) => console.log('p click', ', target: ', e.target))
+        button.addEventListener('click', (e) => {
+            console.log('button click', ', target: ', e.target)
+        })
+    </script>
+</body>
+</html>
