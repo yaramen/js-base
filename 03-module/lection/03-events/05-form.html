@@ -45,20 +45,29 @@
         </label>
         <button>Submit</button>
     </form>
+    <pre id="state"></pre>
 
     <script>
         const form = document.querySelector('form');
+        const state = document.querySelector('#state');
         const formState = {}
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            console.log(formState);
+            //добавить валидацию не заполненое поле
         })
 
         form.addEventListener('change', (e) => {
-            console.log('change', e.target.value );
-            formState[e.target.name] = e.target.value;
+            formState[e.target.name] = e.target.type === 'checkbox'
+                ? e.target.checked
+                : e.target.value
+
+            updateStateView()
         })
+
+        function updateStateView() {
+            state.innerText = JSON.stringify(formState, null, 4)
+        }
     </script>
 </body>
 </html>
