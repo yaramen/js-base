@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .users {
+            display: flex;
+        }
+
+        .user {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 10px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button>load users</button>
+
+    <ul class="users">
+
+    </ul>
+
+    <script type="text/template" id="user-template">
+        <li class="user">
+            <h2>{{LOGIN}}</h2>
+            <img src="{{AVATAR_URL}}" width="100" alt="user avatar"/>
+        </li>
+    </script>
+
+    <script>
+        const button = document.querySelector('button');
+        const userList = document.querySelector('.users')
+        const userTemplate = document.querySelector('#user-template')
+        const url = 'https://api.github.com/users';
+
+
+        function getUserHTML(login, avatar) {
+            return userTemplate.innerHTML
+                .replaceAll('{{LOGIN}}', login)
+                .replaceAll('{{AVATAR_URL}}', avatar);
+        }
+
+        button.addEventListener('click', () => {
+            fetch(url)
+                .then((response) => response.json())
+                .then((users) => {
+                    let html = ''
+                    for(let user of users) {
+                        html += getUserHTML(user.login, user.avatar_url)
+                    }
+                    userList.innerHTML = html;
+                })
+        })
+    </script>
+</body>
+</html>
