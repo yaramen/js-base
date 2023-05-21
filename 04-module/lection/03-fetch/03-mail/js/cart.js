@@ -90,7 +90,7 @@
         incProductButtons.forEach(incButton => incButton.addEventListener('click', handlerIncProduct))
         decProductButtons.forEach(decButton => decButton.addEventListener('click', handlerDecProduct))
         clearOrder && clearOrder.addEventListener('click', handlerClearOrder)
-        buyButton.addEventListener('click', buy);
+        buyButton && buyButton.addEventListener('click', buy);
 
         updateView();
     }
