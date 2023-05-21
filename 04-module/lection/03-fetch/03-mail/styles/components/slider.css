@@ -1,0 +1,22 @@
+.slider {
+    height: 400px;
+}
+
+.slider__image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+    .slider {
+        height: 200px;
+    }
+    
+    .slider__nav {
+        display: none;
+    }
+}
