@@ -21,7 +21,7 @@ function getData($order)
 
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, true);
-$isSend = sendMail('mihaalich2@mail.ru', 'order', getData($input));
+$isSend = sendMail('fikkoperza@gufum.com', 'order', getData($input));
 $response = [
     'status' => $isSend ? 'ok' : 'error',
 ];
