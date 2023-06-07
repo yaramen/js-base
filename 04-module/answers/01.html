@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        label {
+            display: block;
+        }
+
+        form {
+            width: 300px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <label>
+        ФИО
+        <input type="text" name="fio">
+    </label>
+    <fieldset>
+        <legend>Сфера</legend>
+        <label>
+            IT
+            <input type="radio" name="scope" value="it">
+        </label>
+        <label>
+            Sale
+            <input type="radio" name="scope" value="sale">
+        </label>
+    </fieldset>
+
+    <label>
+        Стаж
+        <select name="experience" data-prodcut="3">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+    </label>
+    <label>
+        Согласен на обработку персональных данных
+        <input type="checkbox" name="agree">
+    </label>
+    <div class="error"></div>
+    <button>Submit</button>
+</form>
+<pre id="state"></pre>
+
+<script>
+    const form = document.querySelector('form');
+    const state = document.querySelector('#state');
+    const error = document.querySelector('.error');
+    const formState = {}
+    const COUNT_FIELDS = 4
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const fields = Object.keys(formState);
+        if (fields.length !== COUNT_FIELDS || !formState['agree']) {
+            error.innerText = 'Заполните все поля';
+            return;
+        }
+
+        for (const field of fields) {
+            if (!formState[field]) {
+                error.innerText = 'Заполните все поля';
+                return;
+            }
+        }
+
+        error.innerText = '';
+        alert('Форма отправлена с данными: \n' + JSON.stringify(formState, null, 2));
+    })
+
+    form.addEventListener('change', (e) => {
+        formState[e.target.name] = e.target.type === 'checkbox'
+            ? e.target.checked
+            : e.target.value
+
+        updateStateView()
+    })
+
+    function updateStateView() {
+        state.innerText = JSON.stringify(formState, null, 4)
+    }
+</script>
+</body>
+</html>
