@@ -1,0 +1,16 @@
+.card-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    list-style: none;
+}
+
+.card-list_cart {
+    flex-direction: column;
+    max-width: 700px;
+}
+
+.card-list_cart .card-list__item {
+    width: 100%;
+}

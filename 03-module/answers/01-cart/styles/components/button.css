@@ -1,0 +1,35 @@
+.button {
+    position: relative;
+    padding: 8px 16px;
+    color: white;
+    border: 2px solid white;
+    background: none;
+}
+
+.button__count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    height: 20px;
+    margin-left: 5px;;
+    border: 2px solid white;
+}
+
+.button_primary {
+    background-color: var(--menu-background-color);
+}
+
+.button_login {
+    margin-left: 20px;
+}
+
+.button_cart {
+    display: flex;
+    align-items: center;
+    min-width: 36px;
+    padding: 6px 16px;
+    color: white;
+    margin-left: auto;
+    text-decoration: none;
+}
